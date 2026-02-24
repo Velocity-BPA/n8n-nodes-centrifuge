@@ -1,6 +1,6 @@
 # n8n-nodes-centrifuge
 
-> [Velocity BPA Licensing Notice]
+> **[Velocity BPA Licensing Notice]**
 >
 > This n8n node is licensed under the Business Source License 1.1 (BSL 1.1).
 >
@@ -8,266 +8,178 @@
 >
 > For licensing information, visit https://velobpa.com/licensing or contact licensing@velobpa.com.
 
-A comprehensive n8n community node for the Centrifuge blockchain, providing Real World Asset (RWA) tokenization capabilities with 7 resource categories and 15+ operations for pool management, investments, loans, and document handling.
+This n8n community node provides seamless integration with Centrifuge, the decentralized protocol for real-world asset financing. With 5 comprehensive resources (Pools, Assets, Investments, Loans, Transactions), it enables automated workflows for DeFi asset management, pool monitoring, and investment tracking.
 
-[![npm version](https://badge.fury.io/js/n8n-nodes-centrifuge.svg)](https://badge.fury.io/js/n8n-nodes-centrifuge)
-[![License: BSL 1.1](https://img.shields.io/badge/license-BSL--1.1-blue)](./LICENSE)
+![n8n Community Node](https://img.shields.io/badge/n8n-Community%20Node-blue)
+![License](https://img.shields.io/badge/license-BSL--1.1-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
+![Centrifuge](https://img.shields.io/badge/Centrifuge-Protocol-orange)
+![DeFi](https://img.shields.io/badge/DeFi-Ready-green)
+![RWA](https://img.shields.io/badge/Real%20World%20Assets-supported-purple)
 
 ## Features
 
-### Centrifuge Node (Action Node)
-- **Account Operations**: Get balance, transfer CFG tokens
-- **Pool Operations**: Query all pools, get pool details and metadata
-- **Tranche Operations**: Get tranches, token prices
-- **Investment Operations**: Get orders, positions
-- **Loan Operations**: Query loans, get loan details
-- **Document Operations**: Upload to IPFS, retrieve from IPFS
-- **Utility Operations**: Chain info, validate address, convert address formats
-
-### Centrifuge Trigger Node
-Real-time blockchain event monitoring via WebSocket:
-- Pool events (creation, updates, NAV changes, epochs)
-- Investment events (orders, collections)
-- Loan events (creation, borrowing, repayment)
-- Account events (transfers, balance changes)
-- Epoch lifecycle events
-- Governance events (proposals, voting)
+- **Pool Management** - Create, monitor, and analyze Centrifuge asset pools with comprehensive metrics
+- **Asset Operations** - Track real-world assets, their tokenization status, and valuation data
+- **Investment Tracking** - Monitor investment positions, returns, and portfolio performance across pools
+- **Loan Processing** - Manage loan origination, repayment schedules, and default monitoring
+- **Transaction Analysis** - Query and analyze on-chain transactions with detailed filtering options
+- **Automated Workflows** - Build sophisticated DeFi automation with real-world asset backing
+- **Multi-Chain Support** - Compatible with Ethereum mainnet and Centrifuge parachain operations
+- **Real-time Data** - Access live protocol data for immediate decision making
 
 ## Installation
 
 ### Community Nodes (Recommended)
 
-1. Open your n8n instance
+1. Open n8n
 2. Go to **Settings** → **Community Nodes**
 3. Click **Install a community node**
-4. Enter: `n8n-nodes-centrifuge`
+4. Enter `n8n-nodes-centrifuge`
 5. Click **Install**
 
 ### Manual Installation
 
 ```bash
-# Navigate to your n8n custom extensions folder
-cd ~/.n8n/custom
-
-# Install the package
+cd ~/.n8n
 npm install n8n-nodes-centrifuge
-
-# Restart n8n
 ```
 
 ### Development Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/Velocity-BPA/n8n-nodes-centrifuge.git
 cd n8n-nodes-centrifuge
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Create symlink to n8n custom nodes directory
 mkdir -p ~/.n8n/custom
 ln -s $(pwd) ~/.n8n/custom/n8n-nodes-centrifuge
-
-# Restart n8n
 n8n start
 ```
 
 ## Credentials Setup
 
-### Centrifuge Network Credentials
-
-Required for all blockchain operations:
-
-| Field | Description |
-|-------|-------------|
-| Network | Select network (Mainnet, Testnet, Altair, Development, Custom) |
-| Authentication Type | Seed Phrase, Private Key, or Read-only |
-| Seed Phrase | 12 or 24 word mnemonic (for Seed Phrase auth) |
-| Private Key | Hex-encoded private key (for Private Key auth) |
-| Key Type | SR25519 (default) or ED25519 |
-
-### Centrifuge API Credentials (Optional)
-
-For off-chain data access:
-
-| Field | Description |
-|-------|-------------|
-| Environment | Production, Staging, or Custom |
-| API Key | Your Centrifuge API key |
-| SubQuery Endpoint | GraphQL endpoint for advanced queries |
-
-### IPFS Storage Credentials (Optional)
-
-For document operations:
-
-| Field | Description |
-|-------|-------------|
-| Provider | Pinata, Infura, Web3.Storage, or Custom |
-| Gateway URL | IPFS gateway for retrieval |
-| API Key/Token | Provider-specific authentication |
+| Field | Description | Required |
+|-------|-------------|----------|
+| API Key | Your Centrifuge API key for authenticated requests | Yes |
+| Environment | Select production or sandbox environment | Yes |
+| Network | Choose Ethereum mainnet or Centrifuge parachain | Yes |
 
 ## Resources & Operations
 
-### Account Resource
+### 1. Pools
+
 | Operation | Description |
 |-----------|-------------|
-| Get Balance | Retrieve CFG token balance for an address |
-| Transfer | Send CFG tokens to another address |
+| Get Pool | Retrieve detailed information about a specific pool |
+| List Pools | Get all available pools with filtering options |
+| Get Pool Metrics | Fetch performance metrics and analytics for a pool |
+| Get Pool Assets | List all assets within a specific pool |
+| Monitor Pool | Set up monitoring for pool status changes |
 
-### Pool Resource
+### 2. Assets
+
 | Operation | Description |
 |-----------|-------------|
-| Get All | List all pools on the network |
-| Get Pool | Get detailed information about a specific pool |
+| Get Asset | Retrieve detailed asset information and metadata |
+| List Assets | Get all assets with filtering by type, status, or pool |
+| Create Asset | Tokenize a new real-world asset on Centrifuge |
+| Update Asset | Modify asset metadata or valuation |
+| Get Asset Valuation | Retrieve current and historical asset valuations |
+| Get Asset History | Fetch complete transaction history for an asset |
 
-### Tranche Resource
+### 3. Investments
+
 | Operation | Description |
 |-----------|-------------|
-| Get All | List all tranches for a pool |
+| Get Investment | Retrieve specific investment details and performance |
+| List Investments | Get all investments with portfolio filtering |
+| Create Investment | Make a new investment in a Centrifuge pool |
+| Redeem Investment | Withdraw investment from a pool |
+| Get Investment Returns | Calculate and retrieve investment performance metrics |
+| Track Portfolio | Monitor overall portfolio performance across pools |
 
-### Investment Resource
+### 4. Loans
+
 | Operation | Description |
 |-----------|-------------|
-| Get Orders | Get investment orders for a pool |
-| Get Positions | Get investment positions |
+| Get Loan | Retrieve detailed loan information and terms |
+| List Loans | Get all loans with status and pool filtering |
+| Originate Loan | Create a new loan backed by real-world assets |
+| Update Loan Status | Modify loan status and repayment information |
+| Get Repayment Schedule | Retrieve loan repayment timeline and amounts |
+| Monitor Defaults | Track loan default status and recovery processes |
 
-### Loan Resource
+### 5. Transactions
+
 | Operation | Description |
 |-----------|-------------|
-| Get All | List all loans in a pool |
-| Get Loan | Get detailed loan information |
-
-### Document Resource
-| Operation | Description |
-|-----------|-------------|
-| Upload to IPFS | Upload document content to IPFS |
-| Get from IPFS | Retrieve document from IPFS by CID |
-
-### Utility Resource
-| Operation | Description |
-|-----------|-------------|
-| Get Chain Info | Get blockchain information |
-| Validate Address | Check if an address is valid |
-| Convert Address | Convert address between formats |
-
-## Trigger Node
-
-The Centrifuge Trigger node monitors blockchain events in real-time.
-
-### Event Categories
-- **Pool**: Pool creation, updates, epoch execution
-- **Investment**: Order submissions, collections
-- **Loan**: Creation, borrowing, repayment events
-- **Account**: Balance changes, transfers
-- **Epoch**: Epoch lifecycle events
-- **Governance**: Proposals, voting
-- **Document**: Document anchoring events
-- **All**: Monitor all event types
-
-### Filters
-- Pool IDs: Filter events for specific pools
-- Accounts: Filter events for specific accounts
-- Tranche IDs: Filter by tranche
-- Min Amount: Filter by minimum transaction amount
+| Get Transaction | Retrieve specific transaction details |
+| List Transactions | Get transactions with filtering by type, pool, or date |
+| Get Transaction History | Fetch complete transaction history for an entity |
+| Analyze Transaction Patterns | Generate insights from transaction data |
+| Monitor Pending Transactions | Track transaction status and confirmations |
 
 ## Usage Examples
 
-### Get Account Balance
-
-```json
+```javascript
+// Monitor high-value pool metrics
 {
-  "resource": "account",
-  "operation": "getBalance",
-  "address": "4dTeMxuPJCK7zQGhFcgCivSJqBs9Hp2xrUPKuD9gy3X4FNQU"
+  "poolId": "0x1234567890abcdef",
+  "metricsType": "performance",
+  "timeframe": "30d"
 }
 ```
 
-### Query All Pools
-
-```json
+```javascript
+// Track real estate asset portfolio
 {
-  "resource": "pool",
-  "operation": "getAll"
+  "assetType": "real_estate",
+  "location": "US",
+  "minValue": 1000000,
+  "status": "active"
 }
 ```
 
-### Upload Document to IPFS
-
-```json
+```javascript
+// Automate investment rebalancing
 {
-  "resource": "document",
-  "operation": "uploadToIpfs",
-  "documentContent": "{\"title\": \"Invoice #123\", \"amount\": 5000}",
-  "documentName": "invoice-123.json"
+  "portfolioId": "portfolio_001",
+  "rebalanceThreshold": 0.05,
+  "targetAllocation": {
+    "real_estate": 0.6,
+    "trade_finance": 0.4
+  }
 }
 ```
 
-## Centrifuge Concepts
-
-### Pools
-Pools are the core primitive in Centrifuge, representing a collection of real-world assets that have been tokenized. Each pool has tranches with different risk/return profiles.
-
-### Tranches
-Tranches represent different risk layers within a pool. Senior tranches have priority for returns but lower yields, while junior tranches take more risk for higher potential returns.
-
-### Epochs
-Epochs are time periods during which investment orders are collected and then executed at the end of the epoch. This ensures fair pricing for all participants.
-
-### NAV (Net Asset Value)
-The NAV represents the total value of assets in a pool minus liabilities. It's calculated on-chain and used for tranche token pricing.
-
-## Networks
-
-| Network | Chain ID | SS58 Prefix | Native Token |
-|---------|----------|-------------|--------------|
-| Centrifuge Mainnet | Polkadot Parachain #2031 | 36 | CFG |
-| Altair | Kusama Parachain #2088 | 136 | AIR |
-| Testnet | Rococo | 36 | CFG |
-| Development | Local | 42 | CFG |
+```javascript
+// Monitor loan defaults across pools
+{
+  "loanStatus": "overdue",
+  "daysPastDue": "> 30",
+  "poolIds": ["pool_1", "pool_2", "pool_3"]
+}
+```
 
 ## Error Handling
 
-The node includes comprehensive error handling:
-
-- **Connection Errors**: Automatic retry with exponential backoff
-- **Transaction Failures**: Detailed error messages with failure reasons
-- **Validation Errors**: Input validation before blockchain operations
-- **Rate Limiting**: Respects API rate limits
-
-## Security Best Practices
-
-1. **Seed Phrases**: Never share or expose seed phrases. Use environment variables in production.
-2. **Private Keys**: Store securely using n8n's credential encryption.
-3. **Read-Only Access**: Use read-only mode when possible for queries.
-4. **Proxy Accounts**: Consider using proxy accounts for limited permissions.
-5. **Network Selection**: Always verify you're connected to the intended network.
+| Error | Description | Solution |
+|-------|-------------|----------|
+| Invalid API Key | Authentication failed with provided credentials | Verify API key in Centrifuge credentials settings |
+| Pool Not Found | Requested pool ID does not exist | Check pool ID format and existence on Centrifuge |
+| Insufficient Balance | Not enough tokens for investment or transaction | Verify wallet balance and available liquidity |
+| Network Timeout | Request timed out due to network issues | Retry operation or check Centrifuge network status |
+| Invalid Asset | Asset does not meet tokenization requirements | Review asset metadata and Centrifuge asset standards |
+| Rate Limit Exceeded | Too many API requests in time window | Implement request throttling or upgrade API plan |
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Run tests
 npm test
-
-# Run tests with coverage
-npm run test:coverage
-
-# Run linting
 npm run lint
-
-# Fix linting issues
-npm run lint:fix
-
-# Watch mode for development
 npm run dev
 ```
 
@@ -285,34 +197,24 @@ This n8n community node is licensed under the **Business Source License 1.1**.
 Permitted for personal, educational, research, and internal business use.
 
 ### Commercial Use
-Use of this node within any SaaS, PaaS, hosted platform, managed service,
-or paid automation offering requires a commercial license.
+Use of this node within any SaaS, PaaS, hosted platform, managed service, or paid automation offering requires a commercial license.
 
-For licensing inquiries:
-**licensing@velobpa.com**
+For licensing inquiries: **licensing@velobpa.com**
 
 See [LICENSE](LICENSE), [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md), and [LICENSING_FAQ.md](LICENSING_FAQ.md) for details.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+Contributions are welcome! Please ensure:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-Please ensure your code passes linting and tests before submitting.
+1. Code follows existing style conventions
+2. All tests pass (`npm test`)
+3. Linting passes (`npm run lint`)
+4. Documentation is updated for new features
+5. Commit messages are descriptive
 
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/Velocity-BPA/n8n-nodes-centrifuge/issues)
-- **Centrifuge**: [Discord](https://discord.gg/centrifuge) | [Documentation](https://docs.centrifuge.io/)
-- **n8n**: [Community Forum](https://community.n8n.io/)
-
-## Acknowledgments
-
-- [Centrifuge](https://centrifuge.io/) - Real World Asset tokenization platform
-- [n8n](https://n8n.io/) - Workflow automation platform
-- [Polkadot](https://polkadot.network/) - Substrate blockchain framework
+- **Centrifuge Documentation**: [docs.centrifuge.io](https://docs.centrifuge.io)
+- **Centrifuge Community**: [gov.centrifuge.io](https://gov.centrifuge.io)
