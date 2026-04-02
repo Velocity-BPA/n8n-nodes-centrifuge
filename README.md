@@ -8,25 +8,25 @@
 >
 > For licensing information, visit https://velobpa.com/licensing or contact licensing@velobpa.com.
 
-This n8n community node provides seamless integration with Centrifuge, the decentralized protocol for real-world asset financing. With 5 comprehensive resources (Pools, Assets, Investments, Loans, Transactions), it enables automated workflows for DeFi asset management, pool monitoring, and investment tracking.
+This n8n community node enables automation workflows with Centrifuge's decentralized finance protocol. The node provides 6 resources (Pool, Asset, Investment, Loan, Token, Governance) for managing real-world asset tokenization, liquidity pools, and on-chain governance operations directly from your n8n workflows.
 
 ![n8n Community Node](https://img.shields.io/badge/n8n-Community%20Node-blue)
 ![License](https://img.shields.io/badge/license-BSL--1.1-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)
-![Centrifuge](https://img.shields.io/badge/Centrifuge-Protocol-orange)
-![DeFi](https://img.shields.io/badge/DeFi-Ready-green)
-![RWA](https://img.shields.io/badge/Real%20World%20Assets-supported-purple)
+![DeFi](https://img.shields.io/badge/DeFi-Protocol-green)
+![Tokenization](https://img.shields.io/badge/Asset-Tokenization-orange)
+![Web3](https://img.shields.io/badge/Web3-Compatible-purple)
 
 ## Features
 
-- **Pool Management** - Create, monitor, and analyze Centrifuge asset pools with comprehensive metrics
-- **Asset Operations** - Track real-world assets, their tokenization status, and valuation data
-- **Investment Tracking** - Monitor investment positions, returns, and portfolio performance across pools
-- **Loan Processing** - Manage loan origination, repayment schedules, and default monitoring
-- **Transaction Analysis** - Query and analyze on-chain transactions with detailed filtering options
-- **Automated Workflows** - Build sophisticated DeFi automation with real-world asset backing
-- **Multi-Chain Support** - Compatible with Ethereum mainnet and Centrifuge parachain operations
-- **Real-time Data** - Access live protocol data for immediate decision making
+- **Pool Management** - Create, monitor, and manage liquidity pools for real-world assets
+- **Asset Tokenization** - Mint, transfer, and track tokenized real-world assets on-chain
+- **Investment Operations** - Handle investor deposits, withdrawals, and portfolio tracking
+- **Loan Administration** - Originate, fund, and manage asset-backed loans
+- **Token Operations** - Manage CFG tokens, rewards, and token transfers
+- **Governance Integration** - Participate in protocol governance and proposal voting
+- **Real-time Data** - Access live pool metrics, asset valuations, and transaction data
+- **Multi-chain Support** - Works across Centrifuge Chain and Ethereum networks
 
 ## Installation
 
@@ -61,104 +61,123 @@ n8n start
 
 | Field | Description | Required |
 |-------|-------------|----------|
-| API Key | Your Centrifuge API key for authenticated requests | Yes |
-| Environment | Select production or sandbox environment | Yes |
-| Network | Choose Ethereum mainnet or Centrifuge parachain | Yes |
+| API Key | Your Centrifuge API key for protocol access | Yes |
+| Network | Target network (Centrifuge Chain or Ethereum) | Yes |
+| Wallet Address | Your wallet address for transaction signing | Yes |
+| Environment | API environment (mainnet, testnet) | Yes |
 
 ## Resources & Operations
 
-### 1. Pools
+### 1. Pool
 
 | Operation | Description |
 |-----------|-------------|
-| Get Pool | Retrieve detailed information about a specific pool |
+| Create Pool | Create a new liquidity pool for asset tokenization |
+| Get Pool Details | Retrieve detailed information about a specific pool |
 | List Pools | Get all available pools with filtering options |
-| Get Pool Metrics | Fetch performance metrics and analytics for a pool |
-| Get Pool Assets | List all assets within a specific pool |
-| Monitor Pool | Set up monitoring for pool status changes |
+| Update Pool | Modify pool parameters and settings |
+| Get Pool Performance | Retrieve performance metrics and analytics |
+| Close Pool | Close a pool and handle final distributions |
 
-### 2. Assets
-
-| Operation | Description |
-|-----------|-------------|
-| Get Asset | Retrieve detailed asset information and metadata |
-| List Assets | Get all assets with filtering by type, status, or pool |
-| Create Asset | Tokenize a new real-world asset on Centrifuge |
-| Update Asset | Modify asset metadata or valuation |
-| Get Asset Valuation | Retrieve current and historical asset valuations |
-| Get Asset History | Fetch complete transaction history for an asset |
-
-### 3. Investments
+### 2. Asset
 
 | Operation | Description |
 |-----------|-------------|
-| Get Investment | Retrieve specific investment details and performance |
-| List Investments | Get all investments with portfolio filtering |
-| Create Investment | Make a new investment in a Centrifuge pool |
-| Redeem Investment | Withdraw investment from a pool |
-| Get Investment Returns | Calculate and retrieve investment performance metrics |
-| Track Portfolio | Monitor overall portfolio performance across pools |
+| Mint Asset | Create and mint new tokenized real-world assets |
+| Transfer Asset | Transfer asset ownership between addresses |
+| Get Asset Details | Retrieve comprehensive asset information |
+| List Assets | Get all assets with filtering and pagination |
+| Update Asset | Modify asset metadata and properties |
+| Burn Asset | Remove assets from circulation |
 
-### 4. Loans
-
-| Operation | Description |
-|-----------|-------------|
-| Get Loan | Retrieve detailed loan information and terms |
-| List Loans | Get all loans with status and pool filtering |
-| Originate Loan | Create a new loan backed by real-world assets |
-| Update Loan Status | Modify loan status and repayment information |
-| Get Repayment Schedule | Retrieve loan repayment timeline and amounts |
-| Monitor Defaults | Track loan default status and recovery processes |
-
-### 5. Transactions
+### 3. Investment
 
 | Operation | Description |
 |-----------|-------------|
-| Get Transaction | Retrieve specific transaction details |
-| List Transactions | Get transactions with filtering by type, pool, or date |
-| Get Transaction History | Fetch complete transaction history for an entity |
-| Analyze Transaction Patterns | Generate insights from transaction data |
-| Monitor Pending Transactions | Track transaction status and confirmations |
+| Make Investment | Invest in a pool with specified amount |
+| Redeem Investment | Withdraw investment and claim returns |
+| Get Investment Status | Check current investment positions |
+| List Investments | Get all investments for an investor |
+| Calculate Returns | Compute expected returns and yields |
+| Transfer Investment | Transfer investment positions |
+
+### 4. Loan
+
+| Operation | Description |
+|-----------|-------------|
+| Originate Loan | Create new asset-backed loans |
+| Fund Loan | Provide funding to originated loans |
+| Get Loan Details | Retrieve loan terms and current status |
+| List Loans | Get all loans with filtering options |
+| Make Payment | Process loan payments and interest |
+| Default Loan | Handle loan defaults and recoveries |
+
+### 5. Token
+
+| Operation | Description |
+|-----------|-------------|
+| Transfer Tokens | Send CFG tokens between addresses |
+| Get Balance | Check token balances for addresses |
+| Get Token Info | Retrieve token metadata and properties |
+| List Transactions | Get token transaction history |
+| Stake Tokens | Stake CFG tokens for rewards |
+| Unstake Tokens | Unstake tokens and claim rewards |
+
+### 6. Governance
+
+| Operation | Description |
+|-----------|-------------|
+| Create Proposal | Submit new governance proposals |
+| Vote on Proposal | Cast votes on active proposals |
+| Get Proposal | Retrieve proposal details and status |
+| List Proposals | Get all governance proposals |
+| Delegate Votes | Delegate voting power to others |
+| Get Voting Power | Check current voting power |
 
 ## Usage Examples
 
 ```javascript
-// Monitor high-value pool metrics
+// Create a new liquidity pool
 {
-  "poolId": "0x1234567890abcdef",
-  "metricsType": "performance",
-  "timeframe": "30d"
+  "name": "Real Estate Pool Q4 2024",
+  "asset_class": "real_estate",
+  "min_investment": 1000,
+  "target_size": 50000000,
+  "currency": "USDC"
 }
 ```
 
 ```javascript
-// Track real estate asset portfolio
+// Mint a tokenized real estate asset
 {
-  "assetType": "real_estate",
-  "location": "US",
-  "minValue": 1000000,
-  "status": "active"
-}
-```
-
-```javascript
-// Automate investment rebalancing
-{
-  "portfolioId": "portfolio_001",
-  "rebalanceThreshold": 0.05,
-  "targetAllocation": {
-    "real_estate": 0.6,
-    "trade_finance": 0.4
+  "asset_name": "Commercial Property NYC",
+  "asset_value": 2500000,
+  "pool_id": "pool_12345",
+  "metadata": {
+    "location": "New York City",
+    "property_type": "commercial",
+    "square_feet": 10000
   }
 }
 ```
 
 ```javascript
-// Monitor loan defaults across pools
+// Make an investment in a pool
 {
-  "loanStatus": "overdue",
-  "daysPastDue": "> 30",
-  "poolIds": ["pool_1", "pool_2", "pool_3"]
+  "pool_id": "pool_12345",
+  "amount": 50000,
+  "currency": "USDC",
+  "investor_address": "0x742d35Cc6634C0532925a3b8D84F8b4c37d8e9B8"
+}
+```
+
+```javascript
+// Vote on a governance proposal
+{
+  "proposal_id": "prop_67890",
+  "vote": "yes",
+  "voting_power": 1000,
+  "reason": "This proposal will improve protocol efficiency"
 }
 ```
 
@@ -166,12 +185,12 @@ n8n start
 
 | Error | Description | Solution |
 |-------|-------------|----------|
-| Invalid API Key | Authentication failed with provided credentials | Verify API key in Centrifuge credentials settings |
-| Pool Not Found | Requested pool ID does not exist | Check pool ID format and existence on Centrifuge |
-| Insufficient Balance | Not enough tokens for investment or transaction | Verify wallet balance and available liquidity |
-| Network Timeout | Request timed out due to network issues | Retry operation or check Centrifuge network status |
-| Invalid Asset | Asset does not meet tokenization requirements | Review asset metadata and Centrifuge asset standards |
-| Rate Limit Exceeded | Too many API requests in time window | Implement request throttling or upgrade API plan |
+| INSUFFICIENT_BALANCE | Wallet lacks required token balance | Check balance and fund wallet accordingly |
+| INVALID_POOL_ID | Pool identifier not found | Verify pool exists and ID is correct |
+| UNAUTHORIZED_ACCESS | API key lacks required permissions | Check credentials and permission scopes |
+| NETWORK_ERROR | Blockchain network connectivity issues | Retry request or check network status |
+| INVALID_ASSET | Asset does not exist or is invalid | Verify asset ID and ownership |
+| GOVERNANCE_PERIOD_ENDED | Voting period has closed | Check proposal timeline and deadlines |
 
 ## Development
 
